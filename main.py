@@ -19,6 +19,7 @@ def filter_movie_list(movie_list, cutoff=7.5):
 
 
 def run_application():
+    return "hej"
     movie_list = create_movie_list()
     return filter_movie_list(movie_list)
 
