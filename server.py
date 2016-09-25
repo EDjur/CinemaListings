@@ -1,5 +1,6 @@
 import os
-from .backend_application import app
+from backend_application import app
+
 
 try:
     from SimpleHTTPServer import SimpleHTTPRequestHandler as Handler
