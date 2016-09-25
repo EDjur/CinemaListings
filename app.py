@@ -12,7 +12,8 @@ PORT = int(os.getenv('PORT', 8000))
 @app.route('/')
 def hello_world():
     print("Hello world")
-    movie_list = run_application()
+    movie_list = "HejHEJ"
+    #movie_list = run_application()
     return render_template('index.html', movie_list=movie_list)
 
 if __name__ == '__main__':
