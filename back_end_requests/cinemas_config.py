@@ -17,7 +17,7 @@ cinema_config = None
 
 def create_cinema_config(path=None):
     if not path:
-        path = str(Path(__file__).parents[1]) + "\cinemas_example.json"
+        path = str(Path(__file__).parents[1]) + os.sep + "cinemas_example.json"
     global cinema_config
     print(path)
     if not cinema_config:
