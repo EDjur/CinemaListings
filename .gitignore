@@ -1,3 +1,4 @@
+<<<<<<< Upstream, based on 01fbda06f2e7026c4be0f37431b39c9309aed497
 # Created by .ignore support plugin (hsz.mobi)
 ### Python template
 # Byte-compiled / optimized / DLL files
@@ -100,3 +101,6 @@ gen
 cinemas_full.json
 cinemas_temp.json
 
+=======
+launchConfigurations/
+>>>>>>> 045d65a Added ignore files
