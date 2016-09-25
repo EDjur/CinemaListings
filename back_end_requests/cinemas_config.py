@@ -7,7 +7,7 @@ class CinemasConfig:
     def __init__(self, path):
         self.path = path
         if not os.path.isfile(path):
-            raise EnvironmentError("Error: Missing cinemas_full.json file in {}".format(path))
+            raise FileNotFoundError("Error: Missing cinemas_full.json file in {}".format(path))
         with open(path, encoding="utf-8") as cinemas_json:
             self.cinemas = json.load(cinemas_json)
 
