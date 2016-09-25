@@ -1,7 +1,5 @@
 import os
 
-import app
-
 try:
     from SimpleHTTPServer import SimpleHTTPRequestHandler as Handler
     from SocketServer import TCPServer as Server
@@ -13,10 +11,6 @@ except ImportError:
 PORT = int(os.getenv('PORT', 8000))
 # Change current directory to avoid exposure of control files
 os.chdir('static')
-try:
-    app.run_application()
-except BaseException:
-    pass
 
 httpd = Server(("", PORT), Handler)
 try:
