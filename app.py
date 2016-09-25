@@ -14,7 +14,7 @@ HOST = str(os.getenv('VCAP_APP_HOST', 'localhost'))
 def hello_world():
     print("Hello world")
     movie_list = "HejHEJ"
-    #movie_list = run_application()
+    movie_list = run_application()
     return render_template('index.html', movie_list=movie_list)
 
 if __name__ == '__main__':
