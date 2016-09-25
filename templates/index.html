@@ -11,11 +11,18 @@
 			<td style='width: 30%;'>
 				<img class = 'newappIcon' src="{{ url_for('static', filename='newapp-icon.png') }}">
 			</td>
-			<td>
-				<h1 id = "message">{{ movie_list }}</h1>
-				<p class='description'></p> Thanks for creating a <span class="blue">Python Starter Application</span>.
+            <td>
+				<h1 id = "message">Currently showing on cinemas close to you</h1>
+                {% for cinema in movie_list %}
+                    <p class="description"></p><b><span class="blue">{{ cinema.name }}:</span></b>
+                    {{ cinema.listings|length }}
+                    {% for movie in cinema.listings %}
+                        <br>{{ movie.name }}, IMDB: {{ movie.imdb_rating }}
+                    {% endfor %}
+                {% endfor %}
 			</td>
 		</tr>
+
 	</table>
 </body>
 </html>
