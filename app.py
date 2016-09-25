@@ -11,6 +11,7 @@ port = int(os.getenv('VCAP_APP_PORT', 8080))
 
 @app.route('/')
 def hello_world():
+    print("Hello world")
     movie_list = run_application()
     return render_template('index.html', movie_list=movie_list)
 
