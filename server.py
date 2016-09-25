@@ -1,6 +1,6 @@
 import os
-from backend_application import app
 
+import main
 
 try:
     from SimpleHTTPServer import SimpleHTTPRequestHandler as Handler
@@ -14,7 +14,7 @@ PORT = int(os.getenv('PORT', 8000))
 # Change current directory to avoid exposure of control files
 os.chdir('static')
 try:
-    app.run_application()
+    main.run_application()
 except BaseException:
     pass
 
