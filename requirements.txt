@@ -3,3 +3,4 @@ requests==2.11.1
 imdbpie==4.1.0
 jinja2==2.8
 Flask==0.11.1
+SQLAlchemy==1.0.15

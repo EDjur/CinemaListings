@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import os
-from main import run_application
+from main import run_application, update_db
 
 app = Flask(__name__)
 
@@ -10,12 +10,15 @@ PORT = int(os.getenv('VCAP_APP_PORT', 8080))
 HOST = str(os.getenv('VCAP_APP_HOST', 'localhost'))
 
 
+def setup_db():
+    pass
+
+
 @app.route('/')
 def hello_world():
-    print("Hello world")
-    movie_list = "HejHEJ"
     movie_list = run_application()
     return render_template('index.html', movie_list=movie_list)
 
 if __name__ == '__main__':
+    # setup_db()
     app.run(host=HOST, port=PORT)
