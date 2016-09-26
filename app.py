@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import os
-from main import run_application, update_db
+from main import run_application, create_movie_list, update_db
 
 app = Flask(__name__)
 
@@ -11,7 +11,8 @@ HOST = str(os.getenv('VCAP_APP_HOST', 'localhost'))
 
 
 def setup_db():
-    pass
+    movie_list = create_movie_list()
+    update_db(movie_list)
 
 
 @app.route('/')
@@ -20,5 +21,5 @@ def hello_world():
     return render_template('index.html', movie_list=movie_list)
 
 if __name__ == '__main__':
-    # setup_db()
+    setup_db()
     app.run(host=HOST, port=PORT)

@@ -1,23 +1,27 @@
-from db.declarative_db import Cinema, Base, Movie
-from sqlalchemy import create_engine
-engine = create_engine('sqlite:///sqlalchemy_example.db')
-Base.metadata.bind = engine
-from sqlalchemy.orm import sessionmaker
-DBSession = sessionmaker()
-DBSession.bind = engine
-session = DBSession()
-# Make a query to find all Persons in the database
-session.query(Person).all()
+from back_end_requests import cinema
 
 
-# Return the first Person from all Persons in the database
-person = session.query(Person).first()
+def fetch_all_from_db():
+    from db.insert import InsertDB
+    from db.declarative_db import Base, Movie
 
+    session = InsertDB()
+    movie_list = session.session.query(Movie)
+    final_movie_dict = {}
+    for movie in movie_list:
+        print(movie.host_cinema_name, movie.name, movie.imdb_rating)
+        if movie.host_cinema_name not in final_movie_dict.keys():
 
-# Find all Address whose person field is pointing to the person object
-session.query(Address).filter(Address.person == person).all()
+            final_movie_dict[movie.host_cinema_name] = [cinema.Movie(movie.name, movie.imdb_rating)]
+        else:
+            final_movie_dict[movie.host_cinema_name].append(cinema.Movie(movie.name, movie.imdb_rating))
+    print(final_movie_dict)
 
-
-# Retrieve one Address whose person field is point to the person object
-session.query(Address).filter(Address.person == person).one()
-address = session.query(Address).filter(Address.person == person).one()
+    final_cinema_list = []
+    for location in final_movie_dict.keys():
+        final_cinema_list.append(cinema.Cinema(location, final_movie_dict[location]))
+    print()
+    print("Final Cinema List:")
+    for item in final_cinema_list:
+        print(item.name, item.listings)
+    return final_cinema_list

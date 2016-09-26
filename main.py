@@ -27,24 +27,14 @@ def update_db(movie_list):
 
 
 def fetch_movie_list_from_db():
-    from db.insert import InsertDB
-    from db.declarative_db import Cinema, Base, Movie
-    session = InsertDB()
-    movie_list = session.session.query(Movie)
-    final_movie_list = []
-    for movie in movie_list:
-        print(movie.host_cinema_name, movie.name, movie.imdb_rating)
-        if movie.host_cinema_name in final_movie_list:
-            final_movie_list
-
-
+    from db.fetch import fetch_all_from_db
+    result = fetch_all_from_db()
+    return result
 
 
 def run_application():
-    movie_list = create_movie_list()
-    print(movie_list)
-    update_db(movie_list)
-    fetch_movie_list_from_db()
+    print("\n Fetching from DB...")
+    movie_list = fetch_movie_list_from_db()
     return filter_movie_list(movie_list, 7)
 
 if __name__ == '__main__':
