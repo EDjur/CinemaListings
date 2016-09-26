@@ -1,6 +1,7 @@
 
 from back_end_requests import imdb_requests
 from back_end_requests import cinelist_requests
+from db import declarative_db, insert
 
 
 def create_movie_list():
@@ -15,8 +16,8 @@ def filter_movie_list(movie_list, cutoff=7.5):
     return movie_list
 
 
-def update_db(movie_list):
-    from db import declarative_db, insert
+def update_db():
+    movie_list = create_movie_list()
     declarative_db.init_db()
 
     for cinema in movie_list:
@@ -31,12 +32,4 @@ def fetch_movie_list_from_db():
     result = fetch_all_from_db()
     return result
 
-
-def run_application():
-    print("\n Fetching from DB...")
-    movie_list = fetch_movie_list_from_db()
-    return filter_movie_list(movie_list, 7)
-
-if __name__ == '__main__':
-    run_application()
 

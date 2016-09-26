@@ -9,7 +9,6 @@ def initialize_imdb_connection():
 def title_rating_tuple_list(cinema_list):
     imdb = initialize_imdb_connection()
     for cinema in cinema_list:
-        print("Now fetching results for: {}, {}".format(cinema.name, cinema.listings))
         for movie in cinema.listings:
             title_id = imdb.search_for_title(movie.name)[0]['imdb_id']
             try:
