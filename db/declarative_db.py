@@ -1,17 +1,17 @@
 import os
 from pathlib import Path
+
 from sqlalchemy import Column, ForeignKey, Integer, String, Float
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from sqlalchemy import create_engine
+
 Base = declarative_base()
 
 
 def init_db():
-
     # Create an engine that stores data in the local directory's
     # sqlalchemy.db file.
-    print('sqlite:///' + str(Path(__file__).parents[1]) + os.sep + "db" + os.sep + "sqlalchemy.db")
     engine = create_engine('sqlite:///' + str(Path(__file__).parents[1]) + os.sep + "db" + os.sep + "sqlalchemy.db")
 
     # Create all tables in the engine. This is equivalent to "Create Table"
