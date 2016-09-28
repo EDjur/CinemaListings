@@ -1,6 +1,5 @@
-
-from back_end_requests import imdb_requests
 from back_end_requests import cinelist_requests
+from back_end_requests import imdb_requests
 from db import declarative_db, insert
 
 
@@ -17,8 +16,8 @@ def filter_movie_list(movie_list, cutoff=7.5):
 
 
 def update_db():
-    movie_list = create_movie_list()
     declarative_db.init_db()
+    movie_list = create_movie_list()
 
     for cinema in movie_list:
         session = insert.InsertDB()

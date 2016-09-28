@@ -2,19 +2,53 @@
   "cinemas": [
     {
       "name": "Odeon London Tottenham Court Road",
-      "id": "9868"
-    },
-    {
-      "name": "Odeon London Covent Garden",
-      "id": "9869"
+      "id": "9868",
+      "distance": 0.22
     },
     {
       "name": "Cineworld London - Leicester Square",
-      "id": "10539"
+      "id": "10539",
+      "distance": 0.33
     },
     {
       "name": "Odeon London Leicester Square",
-      "id": "10375"
+      "id": "10375",
+      "distance": 0.33
+    },
+    {
+      "name": "Odeon London Covent Garden",
+      "id": "9869",
+      "distance": 0.33
+    },
+    {
+      "name": "Curzon Soho",
+      "id": "9900",
+      "distance": 0.34
+    },
+    {
+      "name": "Curzon Bloomsbury",
+      "id": "10364",
+      "distance": 0.4
+    },
+    {
+      "name": "Prince Charles Cinema, Leicester Square",
+      "id": "10522",
+      "distance": 0.43
+    },
+    {
+      "name": "Vue West End",
+      "id": "10550",
+      "distance": 0.43
+    },
+    {
+      "name": "Empire Leicester Square",
+      "id": "1271",
+      "distance": 0.48
+    },
+    {
+      "name": "Picturehouse Central, Picadilly",
+      "id": "9111",
+      "distance": 0.55
     }
   ]
 }

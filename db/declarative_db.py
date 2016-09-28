@@ -12,6 +12,8 @@ Base = declarative_base()
 def init_db():
     # Create an engine that stores data in the local directory's
     # sqlalchemy.db file.
+
+    #TODO: This is maybe not needed...
     path = str(Path(__file__).parents[1]) + os.sep + "db" + os.sep + "sqlalchemy.db"
     if os.path.isfile(path):
         os.remove(path)
