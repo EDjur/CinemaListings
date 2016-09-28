@@ -6,3 +6,4 @@ applications:
   name: Cinema App
   host: Cinema-App
   disk_quota: 1024M
+  timeout: 120
