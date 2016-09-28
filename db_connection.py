@@ -4,6 +4,7 @@ from db import declarative_db, insert
 
 
 def create_movie_list():
+    print("Creating movie list...")
     response = cinelist_requests.make_request()
     tuple_list = imdb_requests.title_rating_tuple_list(response)
     return tuple_list
@@ -19,6 +20,7 @@ def update_db():
     declarative_db.init_db()
     movie_list = create_movie_list()
 
+    print("Inserting movie data into database...")
     for cinema in movie_list:
         session = insert.InsertDB()
         session.add_new_cinema(cinema.name, cinema.listings)

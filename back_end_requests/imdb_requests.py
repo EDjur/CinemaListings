@@ -7,6 +7,7 @@ def initialize_imdb_connection():
 
 
 def title_rating_tuple_list(cinema_list):
+    print("Making imdb requests...")
     imdb = initialize_imdb_connection()
     for cinema in cinema_list:
         for movie in cinema.listings:

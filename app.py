@@ -1,14 +1,11 @@
 import os
 
 from flask import Flask, render_template
-from flask_analytics import Analytics
 
 from db_connection import fetch_movie_list_from_db, update_db
 
 app = Flask(__name__)
-Analytics(app)
 
-app.config['ANALYTICS']['GOOGLE_ANALYTICS']['ACCOUNT'] = 'UA-84805793-1'
 # On Bluemix, get the port number from the environment variable VCAP_APP_PORT
 # When running this app on the local machine, default the port to 8080
 PORT = int(os.getenv('VCAP_APP_PORT', 8080))

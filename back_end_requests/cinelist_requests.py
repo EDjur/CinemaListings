@@ -1,7 +1,9 @@
-import requests
 import json
-from .cinemas_config import create_cinema_config
+
+import requests
+
 from .cinema import Cinema, Movie
+from .cinemas_config import create_cinema_config
 
 # API_REQUESTS: http://cinelist.co.uk/
 BASE_URL = "http://api.cinelist.co.uk"
@@ -9,6 +11,7 @@ NOW_SHOWING_URL = "/get/times/cinema/"
 
 
 def make_request():
+    print("Making Cinelist requests...")
     cinema_cfg = create_cinema_config()
     response_list = []
     for cinema in cinema_cfg.cinemas['cinemas']:
