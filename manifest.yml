@@ -6,4 +6,3 @@ applications:
   name: CinemaApp
   host: Cinema-App
   disk_quota: 1024M
-  no-route: true
