@@ -3,7 +3,7 @@ from back_end_requests import cinema
 
 def fetch_all_from_db():
     from db.insert import InsertDB
-    from db.declarative_db import Base, Movie
+    from db.declarative_db import Movie
 
     session = InsertDB()
     movie_list = session.session.query(Movie)
