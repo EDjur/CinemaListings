@@ -6,4 +6,5 @@ applications:
   name: Cinema App
   host: Cinema-App
   disk_quota: 1024M
+  maximum_health_check_timeout: 340
   timeout: 340
