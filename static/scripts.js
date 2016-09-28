@@ -12,3 +12,4 @@
 
 ga('create', 'UA-84805793-1', 'auto');
 ga('send', 'pageview');
+console.log("Google Analytics!!")
