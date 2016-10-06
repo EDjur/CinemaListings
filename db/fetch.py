@@ -1,4 +1,4 @@
-from back_end_requests import cinema
+from back_end_requests import domain
 
 
 def fetch_all_from_db():
@@ -11,12 +11,12 @@ def fetch_all_from_db():
     for movie in movie_list:
         if movie.host_cinema_name not in final_movie_dict.keys():
 
-            final_movie_dict[movie.host_cinema_name] = [cinema.Movie(movie.name, movie.imdb_rating)]
+            final_movie_dict[movie.host_cinema_name] = [domain.Movie(movie.name, movie.imdb_rating)]
         else:
-            final_movie_dict[movie.host_cinema_name].append(cinema.Movie(movie.name, movie.imdb_rating))
+            final_movie_dict[movie.host_cinema_name].append(domain.Movie(movie.name, movie.imdb_rating))
 
     final_cinema_list = []
     for location in final_movie_dict.keys():
-        final_cinema_list.append(cinema.Cinema(location, final_movie_dict[location]))
+        final_cinema_list.append(domain.Cinema(location, final_movie_dict[location]))
 
     return final_cinema_list

@@ -2,8 +2,8 @@ import json
 
 import requests
 
-from .cinema import Cinema, Movie
 from .cinemas_config import create_cinema_config
+from .domain import Cinema, Movie
 
 # API_REQUESTS: http://cinelist.co.uk/
 BASE_URL = "http://api.cinelist.co.uk"
@@ -30,12 +30,11 @@ def get_titles_at_cinema(top_level_response):
     titles = set()
     movie_list = []
 
-    # TODO: Make this nicer i.e. avoid double for-loop
     for listing in top_level_response['listings']:
-        titles.add(listing['title'])
-
-    for title in titles:
-        movie_list.append(Movie(name=title))
+        title = listing['title']
+        if title not in titles:
+            titles.add(listing['title'])
+            movie_list.append(Movie(name=title))
 
     return movie_list
 
