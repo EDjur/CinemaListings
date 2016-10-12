@@ -38,7 +38,6 @@ class InsertDB:
 
     def add_new_movie(self, name=None, imdb_rating=None, host_cinema_name=None):
         # session = init_db()
-        print(self.new_cinema.name)
         new_movie = Movie(name=name, imdb_rating=imdb_rating, host_cinema=self.new_cinema)
 
         print("TESTING DB RETRIEVAL")
