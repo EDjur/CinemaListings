@@ -1,8 +1,10 @@
+import os
+from pathlib import Path
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
 from db.declarative_db import Cinema, Base, Movie
-from pathlib import Path
-import os
 
 
 class InsertDB:
@@ -24,7 +26,6 @@ class InsertDB:
 
     def add_new_cinema(self, name=None, listings=None):
         listings_string = ', '.join([movie.name for movie in listings])
-        print(listings_string)
         self.new_cinema = Cinema(name=name, listings=listings_string) # Used to connect the movies to a cinema
         row = self.session.query(Cinema).filter(Cinema.name == name).all()
         if row:
@@ -37,11 +38,16 @@ class InsertDB:
 
     def add_new_movie(self, name=None, imdb_rating=None, host_cinema_name=None):
         # session = init_db()
+        print(self.new_cinema.name)
         new_movie = Movie(name=name, imdb_rating=imdb_rating, host_cinema=self.new_cinema)
-        row = self.session.query(Movie).filter(Movie.name == name and Movie.host_cinema == host_cinema_name).all()
+
+        print("TESTING DB RETRIEVAL")
+        # FIX THIS. FIXED NOW?
+        row = self.session.query(Movie).filter(Movie.name.like(name)).filter(Movie.host_cinema_name.like(host_cinema_name)).all()
+
         if row:
             row[0].name = name
-            print("Movie already exists at this cinema ({}) already exists. Merging entries...".format(host_cinema_name))
+            print("{} already exists at this cinema ({}). Merging entries...".format(name, host_cinema_name))
         else:
             self.session.add(new_movie)
         self.session.commit()

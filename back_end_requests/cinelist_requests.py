@@ -27,13 +27,13 @@ def make_individual_response(response):
 
 
 def get_titles_at_cinema(top_level_response):
-    titles = set()
+    titles = []
     movie_list = []
 
     for listing in top_level_response['listings']:
         title = listing['title']
         if title not in titles:
-            titles.add(listing['title'])
+            titles.append(listing['title'])
             movie_list.append(Movie(name=title))
 
     return movie_list
