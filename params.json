@@ -1,6 +1,6 @@
 {
   "name": "CinemaListings",
   "tagline": "",
-  "body": "In-development web application for displaying what's on in different cinemas across London.\r\nGathers IMDb scores and sorts the listings at each cinema accordingly.\r\nDevelopment currently slightly slow due to university workload...",
+  "body": "In-development web application for displaying what's on in different cinemas across London.\r\nGathers IMDb scores and sorts the listings at each cinema accordingly.\r\nDevelopment currently slightly slow due to university workload...\r\n\r\nCurrently hosted on IBM Bluemix at:\r\nhttp://cinema-app.eu-gb.mybluemix.net/",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
