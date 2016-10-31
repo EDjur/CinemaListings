@@ -1,5 +1,5 @@
 {
-  "name": "Cinemalistings",
+  "name": "CinemaListings",
   "tagline": "",
   "body": "In-development web application for displaying what's on in different cinemas across London.\r\nGathers IMDb scores and sorts the listings at each cinema accordingly.\r\nDevelopment currently slightly slow due to university workload...",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
