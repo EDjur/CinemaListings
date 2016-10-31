@@ -40,7 +40,6 @@ class InsertDB:
         # session = init_db()
         new_movie = Movie(name=name, imdb_rating=imdb_rating, host_cinema=self.new_cinema)
 
-        print("TESTING DB RETRIEVAL")
         # FIX THIS. FIXED NOW?
         row = self.session.query(Movie).filter(Movie.name.like(name)).filter(Movie.host_cinema_name.like(host_cinema_name)).all()
 
