@@ -28,7 +28,7 @@
             <img class='newappIcon' src="{{ url_for('static', filename='newapp-icon.png') }}">
         </td>
         <td>
-            <h1 id="message">Currently showing on cinemas close to you</h1>
+            <h1 id="message">Currently showing on cinemas close to me :)</h1>
             {% for cinema in movie_list %}
                 <p class="description"></p><b><span class="blue">{{ cinema.name }}:</span></b>
                 {% for movie in cinema.listings %}
@@ -41,5 +41,3 @@
 </table>
 </body>
 </html>
-
-
