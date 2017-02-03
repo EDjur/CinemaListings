@@ -31,5 +31,5 @@ def index():
     return render_template('index.html', movie_list=cinema_list)
 
 if __name__ == '__main__':
-    setup_db()
+    #setup_db()
     app.run(host=HOST, port=PORT)
