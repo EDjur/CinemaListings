@@ -1,9 +1,9 @@
-applications:
-- path: .
-  memory: 256M
-  instances: 1
-  domain: eu-gb.mybluemix.net
-  disk_quota: 1024M
+---
+memory: 256M
+instances: 1
+domain: eu-gb.mybluemix.net
+disk_quota: 1024M
+timeout: 180
 applications:
 - name: CinemaApp
   host: Cinema-App
