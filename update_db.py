@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from db_connection import update_db
 
 
