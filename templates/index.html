@@ -32,7 +32,7 @@
             {% for cinema in movie_list %}
                 <p class="description"></p><b><span class="blue">{{ cinema.name }}:</span></b>
                 {% for movie in cinema.listings %}
-                    <br>{{ movie.name }}, IMDB: {{ movie.imdb_rating }}
+                    <br><a href="https://www.google.co.uk/#q={{ movie.name }} {{ cinema.name }}" target="_blank">{{ movie.name }}</a>, IMDB: {{ movie.imdb_rating }}
                 {% endfor %}
             {% endfor %}
         </td>

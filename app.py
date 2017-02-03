@@ -14,8 +14,6 @@ HOST = str(os.getenv('VCAP_APP_HOST', 'localhost'))
 
 def setup_db():
     update_db()
-    #test
-    #double test
 
 
 def sort_by_imdb_rating(cinema_list):
@@ -33,5 +31,5 @@ def index():
     return render_template('index.html', movie_list=cinema_list)
 
 if __name__ == '__main__':
-    setup_db()
+    # setup_db()
     app.run(host=HOST, port=PORT)
