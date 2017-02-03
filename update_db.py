@@ -1,9 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 from db_connection import update_db
 
 
 def run():
+    print("YOLOOOOOOOOOOOO")
     update_db()
 
 
