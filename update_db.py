@@ -8,6 +8,7 @@ from db_connection import update_db
 def run():
     print("YOLOOOOOOOOOOOO")
     update_db()
+    print("DONE UPDATING DB")
 
 
 if __name__ == '__main__':

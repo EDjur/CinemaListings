@@ -9,7 +9,7 @@ applications:
   host: Cinema-App
   command: python app.py
 - path: .
-  name: update-db
+  name: CinemaApp
   host: Cinema-App
   no-route: true
   command: python update_db.py
