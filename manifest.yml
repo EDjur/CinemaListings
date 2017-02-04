@@ -9,8 +9,8 @@ applications:
   host: Cinema-App
   command: python app.py
 - path: .
-  name: CinemaApp
-  host: Cinema-App
+  name: LDNCinema-backend-db-update
+  host: LDNCinema-backend-db-update
   no-route: true
   command: python update_db.py
 
