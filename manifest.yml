@@ -5,10 +5,10 @@ domain: eu-gb.mybluemix.net
 disk_quota: 1024M
 timeout: 180
 applications:
-- name: CinemaApp
-  host: Cinema-App
-  command: python app.py
 - name: db-update
   host: db-update
   no-route: true
   command: python update_db.py
+- name: CinemaApp
+  host: Cinema-App
+  command: python app.py
