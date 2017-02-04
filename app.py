@@ -32,4 +32,5 @@ def index():
 
 if __name__ == '__main__':
     #setup_db()
+    print("APP.PY STARTING")
     app.run(host=HOST, port=PORT)
