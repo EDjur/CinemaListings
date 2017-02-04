@@ -7,10 +7,11 @@ applications:
 - path: .
   name: CinemaApp
   host: Cinema-App
-  no-route: true
-  command: python update_db.py
+  command: python app.py
 - path: .
   name: CinemaApp
   host: Cinema-App
-  command: python app.py
+  no-route: true
+  command: python update_db.py
+
 
