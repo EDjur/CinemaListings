@@ -1,16 +1,9 @@
-instances: 1
-domain: eu-gb.mybluemix.net
-disk_quota: 1024M
-timeout: 180
 applications:
-- name: CinemaApp
-  host: Cinema-App
-  command: python app.py
+- path: .
   memory: 256M
-- name: LDNCinema-backend-db-update
-  host: LDNCinema-backend-db-update
-  no-route: true
-  command: python update_db.py
-  memory: 64M
-
-
+  instances: 1
+  domain: eu-gb.mybluemix.net
+  name: CinemaApp
+  host: Cinema-App
+  disk_quota: 1024M
+  timeout: 180

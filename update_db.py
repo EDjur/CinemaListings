@@ -1,6 +1,3 @@
-print("UPDATE DB TOP LEVEL")
-#!/usr/bin/env python
-
 from db_connection import update_db
 
 
