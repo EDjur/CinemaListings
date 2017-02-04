@@ -3,6 +3,10 @@ import os
 from flask import Flask, render_template
 
 from db_connection import fetch_movie_list_from_db, update_db
+import time
+import atexit
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.interval import IntervalTrigger
 
 app = Flask(__name__)
 
@@ -13,6 +17,7 @@ HOST = str(os.getenv('VCAP_APP_HOST', 'localhost'))
 
 
 def setup_db():
+    print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
     update_db()
 
 
@@ -23,6 +28,24 @@ def sort_by_imdb_rating(cinema_list):
     return cinema_list
 
 
+scheduler = BackgroundScheduler()
+scheduler.start()
+scheduler.add_job(
+    func=update_db,
+    trigger=IntervalTrigger(hours=1),
+    id='db-update-job',
+    name='Update listings database',
+    replace_existing=True)
+# Shut down the scheduler when exiting the app
+atexit.register(lambda: scheduler.shutdown(wait=False))
+
+
+def run():
+    print("UPDATING DB")
+    update_db()
+    print("DONE UPDATING DB")
+
+
 @app.route('/')
 def index():
     cinema_list = fetch_movie_list_from_db()
@@ -30,7 +53,9 @@ def index():
     # optionally filter movie list filter_movie_list(movie_list, 7)
     return render_template('index.html', movie_list=cinema_list)
 
+
 if __name__ == '__main__':
     #setup_db()
+    print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
     print("APP.PY STARTING")
     app.run(host=HOST, port=PORT)

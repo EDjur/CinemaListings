@@ -1,6 +1,7 @@
 from back_end_requests import cinelist_requests
 from back_end_requests import imdb_requests
 from db import declarative_db, insert
+from tqdm import tqdm
 
 
 def create_movie_list():
@@ -17,15 +18,17 @@ def filter_movie_list(movie_list, cutoff=7.5):
 
 
 def update_db():
+    print("UPDATING DATABASE")
     declarative_db.init_db()
     movie_list = create_movie_list()
 
     print("Inserting movie data into database...")
-    for cinema in movie_list:
+    for cinema in tqdm(movie_list):
         session = insert.InsertDB()
         session.add_new_cinema(cinema.name, cinema.listings)
         for movie in cinema.listings:
             session.add_new_movie(movie.name, movie.imdb_rating, cinema.name)
+    print("DONE UPDATING DATABASE")
 
 
 def fetch_movie_list_from_db():
