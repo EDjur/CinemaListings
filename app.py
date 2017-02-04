@@ -55,7 +55,7 @@ def index():
 
 
 if __name__ == '__main__':
-    #setup_db()
     print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
+    setup_db()
     print("APP.PY STARTING")
     app.run(host=HOST, port=PORT)
