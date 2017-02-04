@@ -5,11 +5,12 @@ disk_quota: 1024M
 timeout: 180
 applications:
 - path: .
+  name: db-update
+  host: db-update
+  no-route: true
+  command: python update_db.py
+- path: .
   name: CinemaApp
   host: Cinema-App
   command: python app.py
-- path: .
-  name: db-update
-  host: Cinema-App
-  no-route: true
-  command: python update_db.py
+
