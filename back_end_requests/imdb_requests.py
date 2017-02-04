@@ -16,7 +16,7 @@ def title_rating_tuple_list(cinema_list):
             try:
                 imdb_movie = imdb.get_title_by_id(title_id)  # bottleneck
                 movie.imdb_rating = imdb_movie.rating
-            except BaseException:
+            except BaseException: # Consider fixing this...
                 movie.imdb_rating = None
 
     return cinema_list
