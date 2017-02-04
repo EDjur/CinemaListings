@@ -1,4 +1,3 @@
-memory: 256M
 instances: 1
 domain: eu-gb.mybluemix.net
 disk_quota: 1024M
@@ -8,10 +7,12 @@ applications:
   name: CinemaApp
   host: Cinema-App
   command: python app.py
+  memory: 256M
 - path: .
   name: LDNCinema-backend-db-update
   host: LDNCinema-backend-db-update
   no-route: true
   command: python update_db.py
+  memory: 64M
 
 
