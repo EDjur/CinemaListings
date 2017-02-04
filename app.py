@@ -21,7 +21,7 @@ def start_db_scheduler():
     scheduler.start()
     scheduler.add_job(
         func=update_db,
-        trigger=IntervalTrigger(hours=1),
+        trigger=IntervalTrigger(hours=12),
         id='db-update-job',
         name='Update listings database',
         replace_existing=True)
