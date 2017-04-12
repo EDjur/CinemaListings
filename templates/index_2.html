@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rae Must Pay</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-84805793-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td style='width: 30%;'>
+            <img class='newappIcon' src="{{ url_for('static', filename='newapp-icon.png') }}">
+        </td>
+        <td>
+            <h1 id="message">Currently showing on cinemas close to me :)</h1>
+            {% for cinema in movie_list %}
+                <p class="description"></p><b><span class="blue">{{ cinema.name }}:</span></b>
+                {% for movie in cinema.listings %}
+                    <br><a href="https://www.google.co.uk/#q={{ movie.name }} {{ cinema.name }}" target="_blank">{{ movie.name }}</a>, IMDB: {{ movie.imdb_rating }}
+                {% endfor %}
+            {% endfor %}
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>
