@@ -1,12 +1,13 @@
-import os
-
-from flask import Flask, render_template
-
-from db_connection import fetch_movie_list_from_db, update_db
-import time
 import atexit
+import json
+import os
+import time
+
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
+from flask import Flask, render_template, request
+
+from db_connection import fetch_movie_list_from_db, update_db
 
 app = Flask(__name__)
 
@@ -50,9 +51,24 @@ def index():
     return render_template('index.html', movie_list=cinema_list)
 
 
+@app.route('/api/listings')
+def _api_get_listings():
+    req_cinema = request.args.get('req_cinema')
+    cinema_list = fetch_movie_list_from_db()
+    d = {}
+    for cinema in cinema_list:
+        d[cinema.name] = [movie_name.name for movie_name in cinema.listings]
+
+    if d.get(req_cinema):
+        return json.dumps(d[req_cinema])
+
+    return json.dumps(d, indent=4)
+
+
 if __name__ == '__main__':
     print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
     start_db_scheduler()
     setup_db()
     print("APP.PY STARTING")
+    #app.debug = True
     app.run(host=HOST, port=PORT)
