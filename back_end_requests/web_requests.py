@@ -39,6 +39,7 @@ def make_everyman_request():
             continue
         listings_today.append(item.find("a", "filmItemTitleLink"))
 
+    # TODO: Change hardcoded Everyman title
     response_list = [Cinema("Everyman King's Cross", [Movie(film.get_text()) for film in listings_today])]
     return response_list
 
