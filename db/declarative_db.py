@@ -10,8 +10,7 @@ Base = declarative_base()
 
 
 def init_db():
-    # Create an engine that stores data in the local directory's
-    # sqlalchemy.db file.
+    # Create an engine that stores data in the local directory's sqlalchemy.db file.
 
     #TODO: This is maybe not needed...
     path = str(Path(__file__).parents[1]) + os.sep + "db" + os.sep + "sqlalchemy.db"
@@ -19,8 +18,7 @@ def init_db():
         os.remove(path)
     engine = create_engine('sqlite:///' + str(Path(__file__).parents[1]) + os.sep + "db" + os.sep + "sqlalchemy.db")
 
-    # Create all tables in the engine. This is equivalent to "Create Table"
-    # statements in raw SQL.
+    # Create all tables in the engine. This is equivalent to "Create Table" statements in raw SQL.
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 

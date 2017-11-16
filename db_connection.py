@@ -1,4 +1,4 @@
-from back_end_requests import cinelist_requests
+from back_end_requests import web_requests
 from back_end_requests import imdb_requests
 from db import declarative_db, insert
 from tqdm import tqdm
@@ -6,7 +6,8 @@ from tqdm import tqdm
 
 def create_movie_list():
     print("Creating movie list...")
-    response = cinelist_requests.make_request()
+    response = web_requests.make_cinelist_request()
+    response.extend(web_requests.make_everyman_request())
     tuple_list = imdb_requests.title_rating_tuple_list(response)
     return tuple_list
 

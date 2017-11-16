@@ -1,6 +1,8 @@
+import datetime
 import json
 
 import requests
+from bs4 import BeautifulSoup
 
 from .cinemas_config import create_cinema_config
 from .domain import Cinema, Movie
@@ -9,8 +11,10 @@ from .domain import Cinema, Movie
 BASE_URL = "http://api.cinelist.co.uk"
 NOW_SHOWING_URL = "/get/times/cinema/"
 
+EVERYMAN_URL = "https://www.everymancinema.com/kings-cross"
 
-def make_request():
+
+def make_cinelist_request():
     print("Making Cinelist requests...")
     cinema_cfg = create_cinema_config()
     response_list = []
@@ -19,6 +23,23 @@ def make_request():
         response = json.loads(response.content.decode("utf-8"))
         response_list.append(Cinema(cinema['name'], get_titles_at_cinema(response)))
 
+    return response_list
+
+
+def make_everyman_request():
+    print("Making Everyman requests...")
+    content = requests.get(EVERYMAN_URL).content
+    soup = BeautifulSoup(content, "html.parser")
+    all_listings = soup.find_all("li", {"class": "gridRow filmItem"})
+    listings_today = []
+
+    today = datetime.datetime.now().date().strftime("%Y-%m-%d")
+    for item in all_listings:
+        if today not in item.get("data-film-session"):
+            continue
+        listings_today.append(item.find("a", "filmItemTitleLink"))
+
+    response_list = [Cinema("Everyman King's Cross", [Movie(film.get_text()) for film in listings_today])]
     return response_list
 
 
@@ -37,4 +58,3 @@ def get_titles_at_cinema(top_level_response):
             movie_list.append(Movie(name=title))
 
     return movie_list
-
