@@ -8,7 +8,7 @@ def create_movie_list():
     print("Creating movie list...")
     response = web_requests.make_cinelist_request()
     response.extend(web_requests.make_everyman_request())
-    tuple_list = imdb_requests.title_rating_tuple_list(response)
+    tuple_list = imdb_requests.omdb_api_client(response)
     return tuple_list
 
 
