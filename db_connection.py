@@ -28,7 +28,7 @@ def update_db():
         session = insert.InsertDB()
         session.add_new_cinema(cinema.name, cinema.listings)
         for movie in cinema.listings:
-            session.add_new_movie(movie.name, movie.imdb_rating, cinema.name)
+            session.add_new_movie(movie.name, movie.imdb_rating, movie.meta_rating, cinema.name)
     print("DONE UPDATING DATABASE")
 
 

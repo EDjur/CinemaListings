@@ -11,9 +11,9 @@ def fetch_all_from_db():
     for movie in movie_list:
         if movie.host_cinema_name not in final_movie_dict.keys():
 
-            final_movie_dict[movie.host_cinema_name] = [domain.Movie(movie.name, movie.imdb_rating)]
+            final_movie_dict[movie.host_cinema_name] = [domain.Movie(movie.name, movie.imdb_rating, movie.meta_rating)]
         else:
-            final_movie_dict[movie.host_cinema_name].append(domain.Movie(movie.name, movie.imdb_rating))
+            final_movie_dict[movie.host_cinema_name].append(domain.Movie(movie.name, movie.imdb_rating, movie.meta_rating))
 
     final_cinema_list = []
     for location in final_movie_dict.keys():

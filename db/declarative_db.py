@@ -35,6 +35,7 @@ class Movie(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     imdb_rating = Column(Float)
+    meta_rating = Column(Integer)
     host_cinema_name = Column(String(250), ForeignKey('cinema.name'))
     host_cinema = relationship(Cinema)
 

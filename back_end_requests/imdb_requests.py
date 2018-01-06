@@ -1,9 +1,9 @@
-import os
 import json
+import os
 
+import requests
 from imdbpie import Imdb
 from tqdm import tqdm
-import requests
 
 # Get API key from environment
 api_key = os.environ.get("OMDB_KEY")
@@ -43,10 +43,16 @@ def omdb_api_client(cinema_list):
                 except requests.RequestException:
                     continue
                 break
-            rating = response.get('imdbRating', 'N/A')
+            imdb_rating = response.get('imdbRating', 'N/A')
+            meta_rating = response.get('Metascore', 'N/A')
             try:
-                movie.imdb_rating = float(rating)
+                movie.imdb_rating = float(imdb_rating)
             except ValueError:
                 movie.imdb_rating = None
+
+            try:
+                movie.meta_rating = int(meta_rating)
+            except ValueError:
+                movie.meta_rating = None
 
     return cinema_list

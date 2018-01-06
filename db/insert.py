@@ -36,9 +36,9 @@ class InsertDB:
             self.session.add(self.new_cinema)
         self.session.commit()
 
-    def add_new_movie(self, name=None, imdb_rating=None, host_cinema_name=None):
+    def add_new_movie(self, name=None, imdb_rating=None, meta_rating=None, host_cinema_name=None):
         # session = init_db()
-        new_movie = Movie(name=name, imdb_rating=imdb_rating, host_cinema=self.new_cinema)
+        new_movie = Movie(name=name, imdb_rating=imdb_rating, meta_rating=meta_rating, host_cinema=self.new_cinema)
 
         # FIX THIS. FIXED NOW?
         row = self.session.query(Movie).filter(Movie.name.like(name)).filter(Movie.host_cinema_name.like(host_cinema_name)).all()
