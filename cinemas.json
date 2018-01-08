@@ -1,0 +1,25 @@
+{
+  "cinemas": [
+    {
+      "name": "Odeon Camden, Camden Town",
+      "id": "9358",
+      "distance": 0.79
+    },
+    {
+      "name": "VUE Islington, Islington",
+      "id": "9672",
+      "distance": 0.84
+    },
+    {
+      "name": "Odeon London Tottenham Court Road, Camden Town",
+      "id": "9868",
+      "distance": 1.24
+    },
+    {
+      "name": "Odeon London Leicester Square, Camden Town",
+      "id": "10375",
+      "distance": 1.63
+    }
+  ]
+}
+
