@@ -1,5 +1,5 @@
 pathlib==1.0.1
-requests==2.11.1
+requests>=2.20.0
 imdbpie==4.1.0
 Jinja2>=2.10.1
 flask>=0.12.3
